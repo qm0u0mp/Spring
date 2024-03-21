@@ -3,7 +3,9 @@ package com.haneul.basic.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.haneul.basic.dto.SampleDto;
+import com.haneul.basic.dto.RequestSampleDto;
+
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +34,8 @@ public class RequestDataController {
         return "사용자 아이디 : " + userId + "/ 사용자 이름 : " + userName + "/ 사용자 나이 : " + userAge;
     }
 
+    // ============================================================================================================================
+
     /*
      * @PathVariable()
      * - 모든 HTTP 메서드에서 URL의 특정 패턴에 따라서 데이터를 추출하는 방식
@@ -53,6 +57,8 @@ public class RequestDataController {
         return "사용자 이름 : " + userName;
     }
 
+    // ============================================================================================================================
+
     // *****주의*****
     // http://localhost:4000/request-data/get/get
     // URL 패턴으로 데이터를 받아오는 방식을 썼을 때 겹치는 패턴이 존재하는지 확인해야함
@@ -66,6 +72,8 @@ public class RequestDataController {
         return "getPathVariable2";
     }
 
+    // ============================================================================================================================
+
     /*
      * @RequestBody()
      * - POST, PATCH, PUT처럼 RequestBody로 데이터를 전송하는 메서드에서 데이터를 가져오기 위해 사용
@@ -75,7 +83,8 @@ public class RequestDataController {
     @PostMapping("/post")
     public String post(
             // @RequestBody String text
-            @RequestBody SampleDto dto) {
+            // @Valid : 해당 payload에 대해서 유효성 검사를 실시하도록 함
+            @RequestBody @Valid RequestSampleDto dto) {
         return "전송한 데이터 : " + dto.toString();
     }
 
