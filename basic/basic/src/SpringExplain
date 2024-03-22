@@ -1,4 +1,4 @@
-* spring init
+■ spring init
     -> application.properties(server.port 변경)
     -> controller 생성 (@RestController, @RequestMapping)
     -> 각 HTTP 요청에 따른 method 생성 (@Get, Post, Put, Patch, DeleteMaping)
